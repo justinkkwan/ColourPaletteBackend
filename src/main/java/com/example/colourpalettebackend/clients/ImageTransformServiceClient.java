@@ -21,7 +21,7 @@ public class ImageTransformServiceClient {
     }
 
     public ImageTransformServiceClient(ManagedChannelBuilder<?> channelBuilder) {
-        channel = channelBuilder.build();
+        channel = channelBuilder.maxInboundMessageSize(1024 * 1024 * 32).build();
         blockingStub = ImageTransformServiceGrpc.newBlockingStub(channel);
     }
 
